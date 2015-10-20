@@ -1,0 +1,60 @@
+<html ng-app="myModule" ng-cloak>
+	
+	<head>
+		<script src="https://code.angularjs.org/1.3.9/angular.js"></script>
+	</head>
+	<body  ng-controller="testCtrl">
+		
+
+		<button ng-click="clickMe($event);">Click Me Please </button>
+
+		{{Demo1}}
+
+		{{i}}
+	</body>
+
+		<script>
+
+			var ang = angular.module('myModule',[]);
+
+			ang.controller('testCtrl',function($scope,$timeout){
+
+
+					$scope.Demo1 = "This is demo text";
+					$scope.clickMe= function($event){
+						
+						$scope.$eval(function(){
+							console.log('Eval : '+ $event.target.innerText + ' ');
+						});
+
+						console.log($event.target.innerText );
+
+						$scope.$evalAsync(function(){
+
+							console.log('Eval Async Calling : ' +$event.target.innerText);
+							$scope.Demo1= $event.target.innerText;
+						});
+
+
+						$event.target.innerText = "Customer Clicked Again ";
+
+
+						$timeout(function(){
+
+								console.log('Calling from $timeout : ' +$event.target.innerText);
+
+						},0)
+
+
+
+						for (var i = 0; i < 1000000; i++) {
+							$scope.i = i;
+						};
+
+					};
+			});
+
+
+		</script>		
+
+</html>

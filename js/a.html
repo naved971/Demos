@@ -1,0 +1,57 @@
+<html ng-app="animTodo">
+<head>
+<link rel="stylesheet" href="http://djyhxgczejc94.cloudfront.net/frameworks/bootstrap/3.0.0/themes/white-plum/bootstrap.min.css">
+ <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-animate.min.js"></script>
+  </head>
+<body ng-controller="TodoCtrl">
+ 
+  <div class="container">
+  			<h1 class="page-header text-center">Animate.css + Angular 1.2</h1>
+  
+		    <form ng-submit="addTodo(newTodo)">
+		      <input type="text" ng-model="newTodo" class="form-control" placeholder="New todo item goes here, then press Enter" focus>
+		    </form>
+    <br>
+    
+		    <div class="list-group">
+		      <div class="list-group-item todo-item" ng-repeat="item in items" ng-class="{'todo-complete': item.complete}">
+		        <span class="close" ng-click="removeTodo($index)">&times;</span>
+		        <label>
+		          <input type="checkbox" ng-model="item.complete">
+		          <span ng-bind="item.text">This is the content of the Todo</span>
+		        </label>
+		      </div>
+		    </div>
+		    <button class="btn btn-block btn-danger" ng-click="clearAll()">Clear All Items</button>
+  </div>
+
+
+
+
+<script>
+var app = angular.module("animTodo", ["ngAnimate"]);
+
+app.controller("TodoCtrl", function($scope) {
+
+  $scope.items = [{text: "This is a demo todo.", complete: true}];
+  $scope.newTodo = "";
+  
+  $scope.addTodo = function() {
+    $scope.items.push({text: $scope.newTodo, complete: false});
+    $scope.newTodo = "";
+  };
+  
+  $scope.removeTodo = function(index) {
+    $scope.items.splice(index, 1);
+  };
+  
+  $scope.clearAll = function() {
+    $scope.items = [];
+  };
+});
+
+</script>
+</body>
+</html>

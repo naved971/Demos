@@ -1,0 +1,125 @@
+
+<html ng-app="myMod" ng-cloak>
+
+	<head>
+	
+	<style type="text/css">
+			.element.ng-enter{
+					transition: 0.500s;
+					opacity:0;
+
+				}
+			 .element.ng-enter-active{
+
+					opacity:1;
+				
+				}
+			.element.ng-enter-stagger{
+
+						transition-delay: .600s;
+
+				}
+			.Mypanel{
+				padding:10px;
+				background-color:gray;
+			}
+
+	</style>
+	<script>
+
+		var name = "Customer ";
+
+
+			var object ={
+
+				name : "test1"
+
+
+
+			}
+
+
+	/*	console.log('1');
+		console.log('2');
+		setTimeout(function(){
+			console.log('4')
+		},0);
+	
+		console.log('3');
+		*/
+
+var a=10;
+		function A(cb){
+
+			if(a==10)
+			{
+			//	alert('A called');
+				cb(C);
+			}
+			
+		}
+
+		function B(cb){
+
+			//alert('B called');
+			 cb();
+
+
+		}
+		
+		function C(){
+
+		//	alert('C called')
+			
+		}
+
+		A(B);
+
+
+
+	</script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	</head>
+
+	<body>
+				<a href="/"> Load Data Home   </a> | 
+				<a href="/page1"> Load Data Page 1  </a> | 
+				<a href="/page2"> Load Date Page 2   </a>
+	<hr>
+	<div ng-controller="indexCtrl">
+	
+
+		<input type="button" onclick="clickMe()" Value="Click"/>
+
+		<button ng-click="clkMe($event)">Hello World</button>
+	
+		{{serviceReturn}}
+		{{factoryReturn}}
+
+	</div>
+	<hr>
+			
+			<div ng-view></div>		
+			<sm-dir></sm-dir>
+			<div ng-include="'footer.html'"></div>
+
+
+			<div enter="Mypanel">This is new Directive div 	</div>
+	</body>		
+
+
+	<script src="https://code.angularjs.org/1.3.9/angular.js"></script>
+	<script src="https://code.angularjs.org/1.3.9/angular-animate.js"></script>
+	<script src="https://code.angularjs.org/1.3.9/angular-route.js"></script>
+
+	<script src="angular/app.js"></script>
+	<script src="angular/directive.js"></script>
+	<script src="angular/services.js"></script>
+		<script src="angular/factory.js"></script>
+
+	<script src="angular/controller.js"></script>
+	<script src="angular/configuration.js"></script>
+
+</html>

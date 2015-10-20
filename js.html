@@ -1,0 +1,120 @@
+<html>
+
+
+<head>
+<script>
+ function foo1(){
+
+ 	return {
+ 				 bar :"hello" 
+ 		};
+
+ }
+
+ function foo2(){
+
+		return 			{
+			bar :"hello"
+		};
+
+ }
+
+
+ console.log("Foo 1 returns :")
+ console.log(foo1());
+console.log("Foo 2 returns : ");
+console.log(foo2());
+
+
+function chk1(){
+
+	console.log(1);
+
+	setTimeout( function(){ console.log(2) },1000);
+	setTimeout(function(){ console.log(3) },0);
+
+	console.log(4);
+
+}
+
+
+
+//chk1();
+ 
+window.onload=function(){
+ for (var i = 0; i < 5; i++) {
+
+ 			var btn = document.createElement('button');
+ 			btn.appendChild(document.createTextNode('Button ' + i) );
+
+			
+			/*btn.addEventListener('click',
+				(function(i){
+
+					return function(){
+						console.log(i+1); 
+					}
+
+				})(i));
+
+*/
+		(function(i){
+			
+			btn.addEventListener('click',function(){
+					console.log(i)
+
+			})
+
+		})(i);
+
+		document.body.appendChild(btn)
+
+  }
+
+
+
+  (function f(n)
+		{
+			//debugger;
+			var val =((n > 1) ? n * f(n-1) : n);
+			return val;
+		}
+)(10)
+
+}
+
+
+
+	//		var foo ="bar";
+
+function bar(){
+debugger
+	 foo = "baz";
+
+
+	function baz(foo)
+	{
+
+			foo ="bam";	
+			bam="yay";
+
+
+	}
+
+	baz();
+}
+
+
+bar();
+
+console.log(foo);
+console.log(bam);
+//baz();
+
+
+ </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html ng-app="animTodo">
+<head>
+<link rel="stylesheet" href="http://djyhxgczejc94.cloudfront.net/frameworks/bootstrap/3.0.0/themes/white-plum/bootstrap.min.css">
+ <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-animate.min.js"></script>
+  </head>
+<body ng-controller="TodoCtrl">
+ 
+ 
+<button ng-click="test.bigger = !test.bigger">
+  Set bigger = {{ !test.bigger }}
+</button>
+
+
+<div class="box">
+  
+this is my first box
+
+</div>
+
+<script>
+var app = angular.module("animTodo", ["ngAnimate"]);
+
+
+</script>
+
+<style>
+
+.box
+{ 
+background:#333;
+color:#fff;
+
+  -webkit-transition: all linear 1000s;
+  transition: all linear 1000s;
+}
+</style>
+</body>
+</html>

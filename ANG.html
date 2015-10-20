@@ -1,0 +1,122 @@
+<html ng-app="myApp">
+<head>
+
+
+<script src="js/angular.js"></script>
+<script>
+
+var app = angular.module('myApp',[]);
+
+var counter =0;
+var factoryCounter =0;
+	app.service('MyService',function(){
+		//debugger
+		this.alerty= "This is current  : "  + counter++;
+	});
+
+
+	app.factory('MyFactory',function(){
+		var objFactory = {};
+	//	debugger
+		console.log(factoryCounter)
+
+		objFactory.FullFac = 'This is calling from factory function ';
+		objFactory.counter= 'this is counter from factory : ' + factoryCounter++;
+
+		return objFactory;
+	});
+
+	var service = null;
+	var factory = null;
+	
+	var factoryCtrl0 = null;
+	var factoryCtrl1 = null;
+
+	var ServiceServiceCtrl0 = null;
+	var ServiceServiceCtrl1 = null;
+
+
+	function hello(val1,val2){	return this.World = function(){} }
+
+	app.controller('myCtrl0',["$scope","MyService","MyFactory",function(scope,MyService,myfactory){
+		
+			console.log('--Controller 0 --');
+
+				var obj ={ id : 'naved'}
+						//console.log(service instanceof Object)
+				ServiceServiceCtrl0 = MyService;
+				console.log(MyService);
+
+	console.log(ServiceServiceCtrl0 instanceof MyService.constructor);
+				console.log(myfactory)
+				var a = angular.injector().annotate(hello);
+	
+			console.log('--Controller 0 --');
+
+	}]);
+
+
+	app.controller('myCtrl1',['$scope','MyService','MyFactory',function(scope,MyService,factory){
+
+			console.log('--Controller 1 --');
+
+			ServiceServiceCtrl1 = MyService;
+
+
+			console.log(ServiceServiceCtrl1 == ServiceServiceCtrl0);
+
+			console.log(ServiceServiceCtrl1 instanceof MyService.constructor);
+			console.log(factory);
+			console.log('--Controller 1 --');
+
+	}]);
+
+
+	function Car(name){
+
+		this.Name = name;
+
+	}
+
+	Car.prototype.Drive=function(){
+
+			console.log('my name is '+ this.name  + ' and I am driving ');
+
+	}
+
+	SuperCar.prototype = new Car();
+	SuperCar.prototype.constructor = SuperCar;
+
+
+	function SuperCar(name)
+	{
+
+		Car.call(this,'naved')
+
+	}
+
+
+
+	SuperCar.myDrive =function(){
+
+
+	console.log('calling current class')
+	}
+
+</script>
+
+</head>
+<body>
+
+
+<div ng-controller="myCtrl0">
+
+
+
+</div>
+
+<div ng-controller="myCtrl1">
+</div>
+
+</body>
+</html>

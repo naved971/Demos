@@ -1,0 +1,14 @@
+{
+
+
+	"customers":[
+	
+		{"id":1, "name":"naved0"},
+		{"id":2, "name":"naved1"},
+		{"id":3, "name":"naved2"},
+		{"id":4, "name":"naved3"},
+		{"id":5, "name":"naved4"},
+		{"id":6, "name":"naved5"},
+		{"id":7, "name":"naved6"}
+	]
+}

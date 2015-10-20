@@ -1,0 +1,166 @@
+	<html>
+
+	<script>
+	
+
+  //"use strict";
+	function* Generator(){
+
+	var one = yield 1;
+	var two = yield 2;
+	var three = yield 3;
+	console.log(one, two , three )
+
+	}
+
+
+
+	var abc = Generator(10);
+
+
+	console.log(abc.next())
+	console.log(abc.next(10))
+	console.log(abc.next(3))
+	console.log(abc.next())
+
+	var abba = "naved";
+
+	//eval('var test = "delhi"')
+
+	var ad= { abba:'umair'}
+
+	function f1(val1, val2,val3){
+
+		arguments[0]='ew val';
+		console.log(this.abba, val1, val2,val3 )
+
+
+
+
+	}
+
+
+var obj = new Object();
+obj.name	='demo1'
+
+	//f1.call({abba:'gekki'},'srk','khan');
+f1.call({abba:'aa'},'don');
+
+	//f1.apply(null,['nk','il',obj.name]);
+
+
+
+for (var i = 0; i < 10 ;i++) {
+						function my(){
+
+						}
+};
+
+addy1();
+//vaddy();
+var vaddy = function(){
+
+	console.log('vaddy i calling ')
+}
+
+function addy1()
+{
+
+
+	console.log('addy is calling ')
+}
+
+var obj ={ count: function(){
+
+
+}}
+
+
+function foo(){
+
+
+var	a = 10;
+
+return 111;
+}
+
+var returnVal  = foo();
+
+console.log(returnVal);
+
+
+function addy(val1){
+
+
+//debugger
+		//if(val2!==undefined)
+		//{
+		//var abba = arguments.callee
+			//	console.log(arguments)
+
+			if(arguments.length===1)
+			{
+				return val1;
+			}
+				return function(val32){
+
+							if(typeof val32!==undefined)
+							{
+						     	return val1+val32;
+							}
+					}
+
+
+
+
+			if(arguments.length>1){
+				
+				var val=0;
+					for (var i = 0; i < arguments.length; i++) {
+						val+=arguments[i];
+					};
+				
+				return val;
+
+			}
+					
+
+	//	}	
+	}
+
+var oneVal=addy(1);
+
+//console.log(typeof oneVal==='function')
+
+
+var twoVal = addy(1,2);
+var threeVal = addy(1,2,3);
+
+//var byfun = addy(1)(2);
+
+
+//console.log("oneVal - :" + oneVal(2) )
+//console.log("twoVal - :" + twoVal )
+//console.log("threeVal - :" + threeVal )
+//console.log("byfun - :" + byfun )
+
+
+function Dabba()
+{
+	this.name ="naved";
+	this.student = "khan";
+	var name="umair";
+}
+
+var bindRef = Dabba.bind(this);
+
+
+
+	</script>
+
+
+	<body>
+
+
+	</body>
+	</html>

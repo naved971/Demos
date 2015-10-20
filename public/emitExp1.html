@@ -1,0 +1,98 @@
+<html ng-app="myModule">
+<script src="https://code.angularjs.org/1.3.9/angular.js"></script>
+
+
+<script>
+
+	var ang =angular.module('myModule',[]);
+
+	ang.controller('parentCtrl',function($scope){
+
+		$scope.$on('Naved',function(event,args){
+
+			$scope.message = args.customMsg;	
+		});
+
+	});
+
+	ang.controller('childCtrl',function($scope){
+
+			$scope.handleClick=function(msg){
+
+				$scope.$emit('Naved',{customMsg : msg});
+			}
+	});
+	var allScope={};
+	function getCtrl(ctrlName)
+	{
+
+		return function($scope){
+
+			$scope.$on('nvdMessage',function(e ,a){
+
+					console.log('Controller : ' + ctrlName + " received msg : " + a.nvdMessage);
+
+			})
+			allScope[ctrlName] = $scope;
+
+		}
+
+	}
+
+	ang.controller('p1Ctrl',getCtrl('p1Ctrl'));
+	ang.controller('p1NCtrl',getCtrl('p1NCtrl'));
+	ang.controller('p2NCtrl',getCtrl('p2NCtrl'));;
+
+	ang.controller('p2Ctrl',getCtrl('p2Ctrl'));
+	ang.controller('p3Ctrl',getCtrl('p3Ctrl'));
+
+	ang.run(function($timeout,$rootScope){
+
+		$rootScope.$on('nvdMessage',function(e,a){
+
+			console.log('RootScope  received Message : ' + a.nvdMessage )
+		});
+
+		$timeout(function(){
+
+		//$rootScope.$broadcast("nvdMessage",{ nvdMessage : "RootScope Message"});
+		allScope['p2Ctrl'].$emit('nvdMessage',{nvdMessage: "Calling p2Ctrl Scope"});
+		})
+
+	})
+
+</script>
+<head>
+</head>
+	<body>
+
+			<div ng-controller="parentCtrl">
+					
+					<span>Parent Controller Message using Emit sub controller to Super : {{message}}</span>
+					{{msg}}
+					<div ng-controller="childCtrl">
+						
+							<input type="text" ng-model='msg'><BR>
+							<HR>
+							{{$parent.message}}
+							<HR><input type="button" ng-click="handleClick(msg)" value="Click Me" />
+					</div>
+
+
+
+			</div>
+
+
+
+			<div ng-controller="p1Ctrl">
+
+									<div ng-controller="p1NCtrl"></div>
+									<div ng-controller="p2NCtrl"></div>
+
+			</div>
+
+			<div ng-controller="p2Ctrl">	</div>
+
+			<div ng-controller="p3Ctrl">	</div>
+	</body>
+</html>

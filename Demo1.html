@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>ngAnimation - simple animation sulotion for angularjs</title>
+
+  <script src="js/angular.js"></script>
+  <script src="oops.js"></script>  
+  <script src="jq.js"></script>
+
+
+<script type="text/html" id="template">
+
+<li id={%=id%}> {%=content%}</li>
+
+
+</script>
+<style>
+div{
+
+  width:100%;
+  height:300px;
+  
+}
+</style>
+  
+</head>
+<body ng-controller="startCtrl" ng-app="myM">
+
+{{2+6}}
+
+{{addition}}
+
+<div ng-controller="stdCtrl">
+</div>
+
+
+<div id="a1">
+  
+</div>
+
+
+<ul id="deparment"></ul>
+<img src="http://p1.pichost.me/i/15/1379596.jpg" />
+<a href="javascript:void(0);">
+  Click here for green background
+</a>
+
+
+<script>
+
+var ang1 = angular.module('myM1',[]);
+
+
+ang1.filter('AddAng1Flt',function(){
+
+  return function(val1, val2,val3){
+      return val3 +val1+val2;
+  }
+
+});
+
+
+ var ang=  angular.module("myM",["myM1"]);
+
+
+  ang.filter("AddFltr",["$filter", function(flt){
+
+        return  function(val1,val2){
+            return  flt('AddAng1Flt')(1000,val1,val2);
+        }
+      }]);
+
+
+ ang.controller('startCtrl',["$scope","$filter","$rootScope",startCtrl]);
+
+ ang.controller('stdCtrl',["$scope",function(s){
+
+  console.log(s);
+ }]);
+
+  function startCtrl ($scope,f,$rootScope){
+
+      $scope.funding ={ startEstimate:0 };
+      $scope.addition = f("AddFltr")(10,10) ;
+      $scope.computeNeed = function(){
+
+          $scope.needed = $scope.startEstimate*10;
+
+      }
+      console.log('----------------------------------------- Root Scope');
+
+      console.log($rootScope);
+      
+      console.log('----------------------------------------- Root Scope');
+      
+      console.log($scope);
+  }
+
+
+function demo1(v,v)
+{
+debugger
+
+return v + v;
+
+}
+
+
+(function(){
+
+  var a=10;
+   b1=10;
+})();
+console.log('a defined ? ' + (typeof a !== 'undefined'));
+console.log('b1  defined ? ' + (typeof b1 !== 'undefined'));
+
+//third party
+var varthirdPartyModule1 = angular.module('thirdPartyModule1',[]);
+var varthirdPartyModule2 = angular.module('thirdPartyModule1',[]);
+
+
+varthirdPartyModule1.factory('thirdPartyFactory',function(){
+
+    return 'Hello This is third party Module 1'
+
+})
+
+
+
+
+
+
+function Car()
+{
+this.name = "naved";
+
+
+}
+
+
+var c =new Car();
+console.log(c.name);
+
+
+
+//immediate invoked function expression 
+void function iife ()
+{
+
+  var bar = function (){ console.log('--calling bar --');}
+  var boo = function(){ console.log('--calling boo ')}
+
+
+
+  var r = function (){
+      bar();
+      boo();
+    return 
+    10;
+  }
+
+  console.log('--r() calling ' +  r());
+
+
+}();
+
+
+
+var b = {
+
+        name:'naved', 
+        demo:function(){ 
+          
+          console.log( arguments[0]);
+
+            return 'i love u '
+
+
+          }
+
+      };
+
+  Object.defineProperty(b,'a',{enumerable:true})
+  Object.defineProperty(b,'b',{enumerable:false})
+  Object.defineProperty(b,'c',{enumerable:false})
+  Object.defineProperty(b,'demo',{enumerable:true})
+  b.d=10;
+
+for(var  i in b)
+{
+console.log(i)
+
+}
+
+console.log(Object.keys(b));
+
+var v=["a",'b'];
+
+for(var i in v)
+{
+
+  console.log(i);
+}
+
+for(var i in Object.keys(b))
+console.log ( i + " : " + b.propertyIsEnumerable(i))
+
+
+
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+
+window.onload = function(){
+
+//alert("window is loaded");
+
+}
+
+$(function(){
+
+//alert('dom is rady')
+
+})
+
+$(window).ready(function(){
+
+
+//  alert('window. ready')
+})
+
+$(function (){
+
+baz = 10;
+var bar = 12;
+
+}());
+
+var abba= 19;
+
+
+
+var makeRequest= function(url , callback){
+
+var data = 10;
+  
+   return callback(data);
+
+
+}
+
+
+var obj ={
+  someValue : 10,
+  loadData:function(data){
+      return this.someValue + data;
+  },
+  prepareRequest:function(){
+    //debugger
+    var url = "http://google.com"
+    
+    console.log(this)
+    console.log('Sum : '   + makeRequest(url,this.loadData.bind(this)));
+
+  }
+
+}
+
+
+
+obj.prepareRequest();
+
+var objectTemplate =   {id:1,content:'khan1'}
+
+
+function myfunArgu(x, y)
+{
+
+
+  if(x>=1)
+    {
+    console.log(" X value is : " + x +" : Y  : "+ y)
+      arguments.callee(x-1,++y)
+    }
+
+
+debugger
+ console.log(" X value is : " + "dfd" +" : Y  : "+ "adf")
+
+//document.writeln("Currently X is : " + x  + " : Currenly Y is : " + y)
+}
+
+myfunArgu(10,1);
+
+</script>
+      
+</html>

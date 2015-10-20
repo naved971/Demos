@@ -1,0 +1,54 @@
+<html ng-app="myModule" ng-cloak>
+	
+	<head>
+		<script src="https://code.angularjs.org/1.3.9/angular.js"></script>
+	</head>
+	<body  ng-controller="testCtrl">
+		
+	<input type="text" ng-model="customerName">
+	{{customerName}}
+		<button onclick="clickMe();">Click Me Please </button>
+
+		{{Demo1}}
+
+		{{i}}
+	</body>
+
+		<script>
+
+			var ang = angular.module('myModule',[]);
+
+			ang.controller('testCtrl',function($scope,$timeout){
+
+
+					window.clickMe=function(){
+							var counter = 0;
+
+							$scope.$watch("customerName" , function(newval,oldval){
+
+							//debugger
+										console.log('Digest loop start running.....'  + (++counter) +  " : Old value : " + oldval+  " : New value : " + newval);
+							})
+
+
+							$scope.$applyAsync(function(){
+							//debugger
+								console.log('Calling Apply and Running ..... 1');
+							})
+
+							$scope.$applyAsync(function(){
+							//debugger
+								console.log('Calling Apply and Running ..... 2');
+							});
+
+							$scope.$applyAsync(function(){
+							//debugger
+								console.log('Calling Apply and Running ..... 3');
+							});
+					};
+			});
+
+
+		</script>		
+
+</html>

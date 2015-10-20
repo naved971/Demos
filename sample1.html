@@ -1,0 +1,58 @@
+<html ng-app="myapp">
+<head>
+<!--http://slides.com/gsklee/animation-in-angularjs-12#/6-->
+
+<style>
+.asa
+{
+	transition: 0.10s linear all;
+	-webkit-transition:0.10s linear all;
+}
+
+.asa.ng-enter
+{
+
+opacity:0 ;
+
+}
+
+.asa.ng-enter-active
+{
+
+opacity: 0;
+
+}
+</style>
+</head>
+
+<body  ng-controller="myCtrl" ng-init="numbers = [1,2]">
+
+{{addition	}}
+
+<ul >
+
+	<li ng-repeat="number in numbers" class="asa">
+			{{number}}
+	</li>
+</ul>
+
+
+<div  ng-repeat="number in numbers" class="asa">
+
+{{number}} + 'Nsbrf
+</div>
+
+<button  ng-click="numbers[numbers.length] = numbers.length+1"  ng-model="numbers.length"	>
+{{numbers.length}} + 'Nsbrf'
+</button>
+</body>
+
+
+
+
+<script src="https://code.angularjs.org/1.2.0rc1/angular.js"></script>
+<script src="https://code.angularjs.org/1.2.0rc1/angular-animate.js"></script>
+
+<script type="text/javascript" src="js/myapp.js	"></script>
+<script type="text/javascript" src="js/customCtrl.js	"></script>
+</html>	

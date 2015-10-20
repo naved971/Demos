@@ -1,0 +1,38 @@
+	
+
+This is page 1
+
+		<div class="tabledata"><!--ng-controller="myCtrl1" -->
+				
+
+			{{c1.Demo1}}
+				<table cellpadding="10" class="table  table-striped table-hover"> 
+				<thead>
+					<tr>
+						<th> Action Item</td>						
+					</tr>
+				</thead>
+				<tbody>
+						<tr ng-repeat="cus in Cus" class="element" >
+							<td>{{cus}}</td>
+						</tr>
+				</tbody>
+				</table>
+
+
+				<div ng-controller="page1NestedCtrl">
+					{{homeRootScope}}
+				</div>
+
+				<input type="button" ng-click="clickMe()" value="Click me Watch"/>
+
+		</div>
+
+
+  <hr />
+
+  <pre>$location.path() = {{$location.path()}}</pre>
+  <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+  <pre>$route.current.params = {{$route.current.params}}</pre>
+  <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+  <pre>$routeParams = {{$routeParams}}</pre>

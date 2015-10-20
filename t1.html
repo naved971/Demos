@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>ngAnimation - simple animation sulotion for angularjs</title>
+
+  <script src="js/angular.js"></script>
+ 
+
+
+<style>
+div{
+
+  width:100%;
+  height:300px;
+  
+}
+</style>
+  
+</head>
+<body  ng-app="myAng" ng-cloak>
+
+  
+<div ng-controller="myCtrlAng1 as vm">
+{{value}}
+{{vm.HelloWorld}}
+</div>
+
+<div ng-controller="myCtrlAng as vm">
+
+  {{value + vm.HelloWorld}} 
+  
+</div>
+
+</body>
+<script>
+
+
+
+      var ang = angular.module('myM',[]);
+
+        ang.controller('myCtrlAng',['$scope',function($scope){
+
+
+          $scope.value ="sdfs";
+
+          var vm = this;
+
+          vm.HelloWorld = "adfasfasfd"
+
+        }]);
+//--------------------------
+      var ang1 = angular.module('myAng',['myM']);
+
+
+
+
+        ang1.controller('myCtrlAng1',['$scope',function($scope){
+
+
+          $scope.value =10;
+
+          var vm = this;
+
+          this.HelloWorld = "hellow world"
+
+        }]);
+
+      
+
+//---------------------------
+
+
+
+
+
+
+
+
+Function.prototype.CustomBind= function(){
+ //     debugger
+      var fn = this;
+      var arg = Array.prototype.slice.call(arguments);
+
+      var o=  arg.shift();
+
+        return function(){
+     //     debugger
+              return fn.apply(o,arg)
+        }
+
+}
+
+
+function add()
+{
+
+    return this.x + this.y;
+
+}
+var o = {x:10,y:20}
+var a = add.CustomBind(o);
+
+function Account(){
+
+    this.x = 10;
+
+}
+
+//var a1 = new Account();
+
+
+
+function add(x)
+{
+
+      return function(y){
+
+          if(y!=undefined)
+          {
+
+            x= x+y ;
+            return arguments.callee;
+          }else{
+
+            return x;
+          }
+
+      }
+
+}
+
+
+
+//console.log ("add(1) : "+  add(1)());
+
+function Addy(a,b){
+debugger
+        var dd = function(b){ 
+            debugger;
+            var c = a+b;
+            return c;
+
+        }
+
+        if(typeof b =='undefined')
+          return dd;
+          else
+           return dd(b);
+
+}
+
+
+
+//console.log ("add(1,2): "+  Addy(1,3) );
+function Add1(){
+
+  return this.x+ this.y;
+}
+var o = {x:10, y:20}
+var a = Add1.bind(o);
+
+</script>
+      
+</html>
